@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-text指令和v-html指令</title>
+</head>
+<body>
+    <div class="demo">
+        <div>v-text</div>
+        <br><br>
+        <div v-text="msg+' Hello World!'">QSJ</div>
+        <div v-text="info+' Hello World!'">QSJ</div>
+        <div>{{ msg +' Hello World!' }}QSJ</div>
+        <hr>
+        <br><br>
+        <div>v-html</div>
+        <div v-html="msg"></div><br><br>
+        v-text和v-html的区别：
+        <div v-text="msg2"></div>
+        <div v-html="msg2"></div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var demo = new Vue({
+        el:".demo",
+        data:{
+            msg:"Test Vue!!!",
+            msg2:"<a href='http://www.gnardada.com'>Engulf丶迷失博客</a>",
+            info:"HAHAHAHA"
+        }
+    })
+</script>
+</html>

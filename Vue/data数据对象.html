@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        {{msg}}
+        <h2>{{ champion.name }} {{ champion.age }}</h2>
+        <ul>
+            <li>{{ array[0] }}</li>
+            <li>{{ array[1] }}</li>
+            <li>{{ array[2] }}</li>
+            <li>{{ array[3] }}</li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var demo = new Vue({
+        el:"#demo",
+        data:{
+            msg : "Test Vue!",
+            champion:{
+                name:"Gnar",
+                age:9
+            },
+            array:["纳尔","千珏","妮蔻","莉莉娅"]
+        }
+    })
+</script>
+</html>
