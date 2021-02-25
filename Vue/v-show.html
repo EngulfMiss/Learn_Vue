@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        <!--v-show指令切换元素的显示状态-->
+        <!--展示图片-->
+        <!-- <img src="http://gnardada.com/wp-content/uploads/2021/02/%E5%9B%BE%E7%89%872021-02-22-07-30-40-150x150.jpg" alt="书" v-show="WantShow"> -->
+        <!--一定条件下展示图片-->
+        <img src="http://gnardada.com/wp-content/uploads/2021/02/%E5%9B%BE%E7%89%872021-02-22-07-30-40-150x150.jpg" alt="书" v-show="age>18">
+        <input type="button" v-on:click="changeShow(),add()" value="显示/隐藏">
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var test = new Vue({
+        el:"#test",
+        data:{
+            WantShow:false,
+            age:16
+        },
+        methods:{
+            changeShow:function(){
+                this.WantShow = !this.WantShow;
+            },
+            add:function(){
+                this.age++;
+                alert(this.age);
+            }
+        }
+    })
+</script>
+</html>

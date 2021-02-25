@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        <!--
+
+            v-show和v-if的区别
+                v-show操作的是display属性
+                v-if操作的是dom元素
+        -->
+        <p v-if="WantShow">千山王中玉</p>
+        <p v-if="year > 2000">千山王中玉</p>
+        <input type="button" value="显示/隐藏" v-on:click="changShow(),add()">
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var test = new Vue({
+        el:"#test",
+        data:{
+            WantShow:false,
+            year:1500,
+        },
+        methods:{
+            changShow:function(){
+                this.WantShow = !this.WantShow;
+            },
+            add:function(){
+                this.year += 500;
+            }
+        }
+    })
+</script>
+</html>
