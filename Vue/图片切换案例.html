@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mask">
+        <div class="center">
+                <img :src="imgArr[index]" alt=""/>
+        </div>
+        <a href="javascript:void(0)" class="left" v-on:click="pre" v-show="index > 0"><</a>
+        <a href="javascript:void(0)" class="right" v-on:click="aft" v-show="index < imgArr.length - 1">></a>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var test = new Vue({
+        el:"#mask",
+        data:{
+            imgArr:["images/book1.png","images/book2.png","images/book3.png","images/book4.png","images/book5.png","images/book6.png"],
+            index:0,
+        },
+        methods:{
+            pre:function(){
+                this.index--;
+                alert(this.index);
+            },
+            aft:function(){
+                this.index++;
+                alert(this.index);
+            }
+        }
+    })
+</script>
+</html>
