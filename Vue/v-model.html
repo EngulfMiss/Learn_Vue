@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        <input type="text" v-model="msg" @keyup.enter="func()">
+        <input type="button" v-on:click="setMsg" value="改变Msg">
+        <h2>{{ msg }}</h2>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var test = new Vue({
+        el:"#test",
+        data:{
+            msg:"千山王中玉",
+        },
+        methods:{
+            func:function(){
+                alert(this.msg);
+            },
+            setMsg:function(){
+                this.msg = "gnardada~";
+            }
+        }
+    })
+</script>
+</html>
