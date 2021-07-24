@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on事件绑定</title>
+
+</head>
+<body>
+    <!-- view层 模板 -->
+    <div id="app">
+        输入的内容:<input type="text" v-model="msg">{{msg}}
+        输入的其他内容:<textarea v-model="message"></textarea>{{message}}
+        单选：<input type="radio" name="sex" value="男" v-model="sex">男的
+        <input type="radio" name="sex" value="女" v-model="sex">女的
+        选的是：{{sex}}
+    </div>
+    <div id="app2" >
+        下拉框：
+        <select v-model="selected">
+            <option value="" disabled>--请选择--</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+        </select>
+        value:{{selected}}
+    </div>
+</body>
+<!-- 导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "123",
+            message: "gnar",
+            sex: ""
+        }
+    });
+    var vm2 = new Vue({
+        el: "#app2",
+        data: {
+            selected: ""
+        }
+    });
+</script>
+</html>

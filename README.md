@@ -78,3 +78,44 @@ ___
     });
 </script>
 ```
+- v-model 数据双向绑定  
+你可以用 v-model指令在表单<input>,<textarea>以及<select>元素上创建数据双向绑定  
+**注意: v-model 会忽略所有表单元素的value，checked,selected特性的初始值而总是将Vue实例的数据作为数据来源。  
+你应该通过JavaScript在组件的data选项中声明初始值!**
+```html
+<div id="app">
+    输入的内容:<input type="text" v-model="msg">{{msg}}
+    输入的其他内容:<textarea v-model="message"></textarea>{{message}}
+    单选：<input type="radio" name="sex" value="男" v-model="sex">男的
+    <input type="radio" name="sex" value="女" v-model="sex">女的
+    选的是：{{sex}}
+</div>
+<div id="app2" >
+    下拉框：
+    <select v-model="selected">
+        <option value="" disabled>--请选择--</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+    </select>
+    value:{{selected}}
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "123",
+            message: "gnar",
+            sex: ""
+        }
+    });
+    var vm2 = new Vue({
+        el: "#app2",
+        data: {
+            selected: ""
+        }
+    });
+</script>
+```
