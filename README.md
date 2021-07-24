@@ -78,10 +78,8 @@ ___
     });
 </script>
 ```
-- v-model 数据双向绑定  
-你可以用 v-model指令在表单<input>,<textarea>以及<select>元素上创建数据双向绑定  
-**注意: v-model 会忽略所有表单元素的value，checked,selected特性的初始值而总是将Vue实例的数据作为数据来源。  
-你应该通过JavaScript在组件的data选项中声明初始值!**
+- v-model 数据双向绑定
+
 ```html
 <div id="app">
     输入的内容:<input type="text" v-model="msg">{{msg}}
@@ -119,3 +117,5 @@ ___
     });
 </script>
 ```
+注意:v-model指令在表单input,textarea以及select元素上创建数据双向绑定 v-model  会忽略所有表单元素的value，checked,selected特性的初始值而总是将Vue实例的数据作为数据来源。  
+你应该通过JavaScript在组件的data选项中声明初始值!
