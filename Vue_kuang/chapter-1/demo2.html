@@ -2,17 +2,17 @@
 <html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>v-bind</title>
+    <title>v-if,v-else,v-else-if</title>
 
 </head>
 <body>
     <!-- view层 模板 -->
     <div id="app">
-        {{msg}}
+        <h1 v-if="type==='A'">A</h1>
+        <h1 v-else-if="type==='B'">B</h1>
+        <h1 v-else-if="type==='C'">C</h1>
+        <h1 v-else>D</h1>
     </div>
-    <span id="app2" v-bind:title="msg">
-        鼠标悬停的提示信息
-    </span>
 </body>
 <!-- 导入Vue.js -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -21,13 +21,7 @@
         el: "#app",
         //Model ：数据
         data: {
-            msg: "Hello,Vue!"
-        }
-    });
-    var vm2 = new Vue({
-        el: "#app2",
-        data: {
-            msg: "Hello,World!"
+            type: "A"
         }
     });
 </script>

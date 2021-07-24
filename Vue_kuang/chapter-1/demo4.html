@@ -1,33 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>v-bind</title>
+    <title>v-on事件绑定</title>
 
 </head>
 <body>
     <!-- view层 模板 -->
     <div id="app">
-        {{msg}}
+        <button v-on:click="sayHello">Click Me</button>
     </div>
-    <span id="app2" v-bind:title="msg">
-        鼠标悬停的提示信息
-    </span>
 </body>
 <!-- 导入Vue.js -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
     var vm = new Vue({
         el: "#app",
-        //Model ：数据
-        data: {
-            msg: "Hello,Vue!"
-        }
-    });
-    var vm2 = new Vue({
-        el: "#app2",
         data: {
             msg: "Hello,World!"
+        },
+        methods: {  //方法必须定义在vue的Methods对象中
+            sayHello: function () {
+                alert(this.msg);
+            }
         }
     });
 </script>
