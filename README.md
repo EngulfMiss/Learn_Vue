@@ -107,7 +107,7 @@ ___
         el: "#app",
         data: {
             msg: "123",
-            message: "gnar",
+            message: "kindred",
             sex: ""
         }
     });
