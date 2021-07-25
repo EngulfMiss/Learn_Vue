@@ -28,6 +28,7 @@ workspace.xml
 /nbdist/
 /.nb-gradle/
 build/
+myvue/
 !**/src/main/**/build/
 !**/src/test/**/build/
 

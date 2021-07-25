@@ -2,7 +2,7 @@
 <html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>插槽</title>
+    <title>插槽与自定义事件</title>
 
 </head>
 <body>
@@ -10,7 +10,7 @@
     <div id="app">
         <todo>
             <todo-title slot="todo-title" :tit="text"></todo-title>
-            <todo-items slot="todo-items" v-for="item in todoItems" :arrays="item"></todo-items>
+            <todo-items slot="todo-items" v-for="(item,index) in todoItems" :arrays="item" :index="index" v-on:del="removeItem(index)"></todo-items>  <!-- 前面index是组件中的属性名，后面是v-for中的下标名 -->
         </todo>
     </div>
 </body>
@@ -34,8 +34,14 @@
     });
 
     Vue.component("todo-items",{
-        props: ["arrays"],
-       template: "<li>{{arrays}}</li>"
+        props: ["arrays","index"],
+        //只能绑定当前组件的方法
+       template: "<li>{{index+1}} ---- {{arrays}}<button @click='remove'>删除</button></li>",
+        methods: {
+            remove: function (dex) {
+                this.$emit('del',dex);   //参数 ： 自定义事件名,方法参数
+            }
+        }
     });
 
     var vm = new Vue({
@@ -43,6 +49,12 @@
         data: {
             text: "我真的无语了",
             todoItems: ["Kindred","Gnar","Neeko"]
+        },
+        methods: {
+            removeItem: function (index) {
+                alert("删除了元素:"+this.todoItems[index]);
+                this.todoItems.splice(index,1);
+            }
         }
     });
 </script>

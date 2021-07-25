@@ -239,14 +239,14 @@ ___
     });
 </script>
 ```
-- 插槽 slot
+- 插槽 slot 和 自定义事件$emit
 ```html
 <body>
     <!-- view层 模板 -->
     <div id="app">
         <todo>
             <todo-title slot="todo-title" :tit="text"></todo-title>
-            <todo-items slot="todo-items" v-for="item in todoItems" :arrays="item"></todo-items>
+            <todo-items slot="todo-items" v-for="(item,index) in todoItems" :arrays="item" :index="index" v-on:del="removeItem(index)"></todo-items>  <!-- 前面index是组件中的属性名，后面是v-for中的下标名 -->
         </todo>
     </div>
 </body>
@@ -270,8 +270,14 @@ ___
     });
 
     Vue.component("todo-items",{
-        props: ["arrays"],
-       template: "<li>{{arrays}}</li>"
+        props: ["arrays","index"],
+        //只能绑定当前组件的方法
+       template: "<li>{{index+1}} ---- {{arrays}}<button @click='remove'>删除</button></li>",
+        methods: {
+            remove: function (dex) {
+                this.$emit('del',dex);   //参数 ： 自定义事件名,方法参数
+            }
+        }
     });
 
     var vm = new Vue({
@@ -279,7 +285,25 @@ ___
         data: {
             text: "我真的无语了",
             todoItems: ["Kindred","Gnar","Neeko"]
+        },
+        methods: {
+            removeItem: function (index) {
+                alert("删除了元素:"+this.todoItems[index]);
+                this.todoItems.splice(index,1);
+            }
         }
     });
 </script>
 ```
+
+## Vue:第一个vue-cli项目
+[node.js下载](http://nodejs.cn/download/)  
+- 安装Node.js 淘宝镜像加速 npm install cnpm -g  
+- 修改npm安装路径  
+npm config set cache "D:\Program Files\npm-cache"  
+npm config set prefix "D:\Program Files\npm_global"  
+
+- 安装vue-cli cnmp vue-cli cnpm install vue-cli -g
+- 初始化vue项目 vue init webpack myvue   一路no
+- 安装好之后，进入刚刚的vue项目，安装依赖环境 npm install
+- 运行项目 npm run dev
