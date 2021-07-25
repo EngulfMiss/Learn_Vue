@@ -118,4 +118,168 @@ ___
 </script>
 ```
 注意:v-model指令在表单input,textarea以及select元素上创建数据双向绑定 v-model  会忽略所有表单元素的value，checked,selected特性的初始值而总是将Vue实例的数据作为数据来源。  
-你应该通过JavaScript在组件的data选项中声明初始值!
+你应该通过JavaScript在组件的data选项中声明初始值!  
+- 组件
+```html
+<body>
+    <!-- view层 模板 -->
+    <div id="app">
+        <!-- 组件 -->
+        <kindred v-for="item in items" v-bind:array="item"></kindred>
+    </div>
+</body>
+<script>
+    //定义一个Vue组件
+    Vue.component("kindred",{
+        props: ["array"],
+        template: "<li>{{array}}</li>"
+    });
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            items: ["Gnar","Kindred","Neeko"]
+        }
+    });
+</script>
+```
+
+- Axios实现Ajax
+```json
+{
+  "name": "Kindred",
+  "url": "http://gnardada.com/",
+  "page": 1,
+  "isNonProfit": true,
+  "address": {
+    "street": "大街",
+    "city": "郴州",
+    "country": "中国"
+  },
+  "links": [
+    {
+      "name": "bilibili",
+      "url": "www.bilibili.com"
+    },
+    {
+      "name": "baidu",
+      "url": "www.baidu.com"
+    }
+  ]
+}
+```
+```html
+<body>
+    <!-- view层 模板 -->
+    <div id="vue" v-clock>
+        <div>{{info.name}}</div>
+        <div>{{info.address.city}}</div>
+        <a v-bind:href="info.url">我的网页</a>
+        <div>{{info.links[0].name}}</div>
+    </div>
+</body>
+<!-- 导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#vue",
+        data(){
+            return{
+                //请求的返回参数，必须和json字符串一样
+                info: {
+                    name: null,
+                    url: null,
+                    address: {
+                        street: null,
+                        city: null,
+                        country: null
+                    },
+                    links: [{
+                        name: null,
+                        url: null
+                    }]
+                }
+            }
+        },
+        mounted(){ //钩子函数 链式编程
+            axios.get('../data.json').then(response=>(this.info=response.data))
+        }
+    });
+</script>
+```
+- 计算属性:计算出来的结果，保存在属性中，内存中运行：虚拟DOM，想象为缓存。
+计算属性的主要特性就是为了将不经常变化的计算结果进行缓存，以节约我们的系统开销;
+```html
+<body>
+    <!-- view层 模板 -->
+    <div id="app">
+        <p>now : {{currentTime1()}}</p> <!-- 方法 -->
+        <p>now : {{currentTime2}}</p>   <!-- 属性 -->
+    </div>
+</body>
+<!-- 导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "Kindred"
+        },
+        methods: {
+            currentTime1: function () {
+                return Date.now();  //返回一个时间戳
+            }
+        },
+        computed: {  //计算属性 methods和computed 方法名不能重名，一个通过方法，一个使用属性调用
+            currentTime2: function () {
+                this.msg;
+                return Date.now();  //返回一个时间戳
+            }
+        }
+    });
+</script>
+```
+- 插槽 slot
+```html
+<body>
+    <!-- view层 模板 -->
+    <div id="app">
+        <todo>
+            <todo-title slot="todo-title" :tit="text"></todo-title>
+            <todo-items slot="todo-items" v-for="item in todoItems" :arrays="item"></todo-items>
+        </todo>
+    </div>
+</body>
+<!-- 导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    //slot定义插槽
+    Vue.component("todo",{
+       template:
+           "<div>\
+               <slot name='todo-title'></slot>\
+               <ul>\
+                    <slot name='todo-items'></slot>\
+               </ul>\
+           </div>"
+    });
+
+    Vue.component("todo-title",{
+        props: ["tit"],
+        template: "<div>{{tit}}</div>"
+    });
+
+    Vue.component("todo-items",{
+        props: ["arrays"],
+       template: "<li>{{arrays}}</li>"
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            text: "我真的无语了",
+            todoItems: ["Kindred","Gnar","Neeko"]
+        }
+    });
+</script>
+```

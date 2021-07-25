@@ -1,0 +1,21 @@
+{
+  "name": "Kindred",
+  "url": "http://gnardada.com/",
+  "page": 1,
+  "isNonProfit": true,
+  "address": {
+    "street": "大街",
+    "city": "郴州",
+    "country": "中国"
+  },
+  "links": [
+    {
+      "name": "bilibili",
+      "url": "www.bilibili.com"
+    },
+    {
+      "name": "baidu",
+      "url": "www.baidu.com"
+    }
+  ]
+}

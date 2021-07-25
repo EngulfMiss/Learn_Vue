@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+
+</head>
+<body>
+    <!-- view层 模板 -->
+    <div id="app">
+        <p>now : {{currentTime1()}}</p>
+        <p>now : {{currentTime2}}</p>
+    </div>
+</body>
+<!-- 导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "Kindred"
+        },
+        methods: {
+            currentTime1: function () {
+                return Date.now();  //返回一个时间戳
+            }
+        },
+        computed: {  //计算属性 methods和computed 方法名不能重名，一个通过方法，一个使用属性调用
+            currentTime2: function () {
+                this.msg;
+                return Date.now();  //返回一个时间戳
+            }
+        }
+    });
+</script>
+</html>

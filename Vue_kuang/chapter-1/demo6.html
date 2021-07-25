@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件</title>
+
+</head>
+<body>
+    <!-- view层 模板 -->
+    <div id="app">
+        <!-- 组件 -->
+        <kindred v-for="item in items" v-bind:array="item"></kindred>
+    </div>
+</body>
+<script>
+    //定义一个Vue组件
+    Vue.component("kindred",{
+        props: ["array"],
+        template: "<li>{{array}}</li>"
+    });
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            items: ["Gnar","Kindred","Neeko"]
+        }
+    });
+</script>
+<!-- 导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</html>

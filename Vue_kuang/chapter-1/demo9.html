@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>插槽</title>
+
+</head>
+<body>
+    <!-- view层 模板 -->
+    <div id="app">
+        <todo>
+            <todo-title slot="todo-title" :tit="text"></todo-title>
+            <todo-items slot="todo-items" v-for="item in todoItems" :arrays="item"></todo-items>
+        </todo>
+    </div>
+</body>
+<!-- 导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    //slot定义插槽
+    Vue.component("todo",{
+       template:
+           "<div>\
+               <slot name='todo-title'></slot>\
+               <ul>\
+                    <slot name='todo-items'></slot>\
+               </ul>\
+           </div>"
+    });
+
+    Vue.component("todo-title",{
+        props: ["tit"],
+        template: "<div>{{tit}}</div>"
+    });
+
+    Vue.component("todo-items",{
+        props: ["arrays"],
+       template: "<li>{{arrays}}</li>"
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            text: "我真的无语了",
+            todoItems: ["Kindred","Gnar","Neeko"]
+        }
+    });
+</script>
+</html>
