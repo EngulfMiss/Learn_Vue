@@ -307,3 +307,8 @@ npm config set prefix "D:\Program Files\npm_global"
 - 初始化vue项目 vue init webpack myvue   一路no
 - 安装好之后，进入刚刚的vue项目，安装依赖环境 npm install
 - 运行项目 npm run dev
+
+## webpack使用
+- 安装webpack
+    - npm install webpack -g
+    - npm install webpack-cli -g
