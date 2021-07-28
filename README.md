@@ -312,3 +312,32 @@ npm config set prefix "D:\Program Files\npm_global"
 - 安装webpack
     - npm install webpack -g
     - npm install webpack-cli -g
+    
+
+## vue-rount使用
+- 项目中安装vue-rount  
+D:\PracticeDemo\Learn_Vue\Vue_kuang\myvue>npm install vue-router --save-dev
+
+## elementUI使用
+```
+1. 新建项目
+vue init webpack projectName
+
+2. 进入工程目录
+cd projectName
+
+3. 安装vue-router
+npm install vue-router --save-dev
+
+4. 安装element-ui
+npm i element-ui -S
+
+5. 安装依赖
+npm install
+
+6. 安装SASS加载器
+cnpm install sass-loader node-sass --save-dev
+
+7. 启动测试
+npm run dev
+```
